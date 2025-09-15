@@ -71,12 +71,12 @@ Array & Array::operator = (const Array &other)
 
 int Array::Get_Size() const {  return size;  };
 
-bool Array::Is_Empty()
+bool Array::Is_Empty() const
 {
     return data == nullptr;
 }
 
-void Show(const Array & arr, std::string message)
+void Show(const Array & arr, const std::string message)
 {
     if(arr.data != nullptr)
     {

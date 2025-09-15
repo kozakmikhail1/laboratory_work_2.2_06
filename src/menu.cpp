@@ -57,8 +57,6 @@ void Menu::Choose_Constructor()
         {
             case 1:
             {
-                //Array temp_arr;
-                //arr_1 = temp_arr;
                 Choose_Operation();
                 break;
             }

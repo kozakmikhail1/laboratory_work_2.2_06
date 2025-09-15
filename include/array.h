@@ -24,6 +24,6 @@ class Array
     friend void Enter(Array& arr);
 
     int Get_Size() const;
-    bool Is_Empty();
+    bool Is_Empty() const;
 
 };
