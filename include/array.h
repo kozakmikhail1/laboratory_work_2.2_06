@@ -4,8 +4,8 @@
 
 class Array
 {
-    int *data;
     int size;
+    int *data;
  
     public :
 
@@ -17,6 +17,8 @@ class Array
 
     Array & operator !(); 
     Array & operator = (Array &&other) noexcept;
+    Array & operator = (const Array& other);
+
 
     friend void Show (const Array& arr, std::string message);
     friend void Enter(Array& arr);

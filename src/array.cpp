@@ -21,6 +21,7 @@ Array::Array(Array && other)noexcept : size(other.size), data(other.data)
     other.data = nullptr;
 }
 
+
 Array::~Array()
 {
     delete[] data;
@@ -44,20 +45,30 @@ Array &  Array :: operator !()
     return *this;
 }
 
-// Правильное перемещающее присваивание
 Array& Array::operator=(Array&& other) noexcept 
 {
     if (this != &other) {
-        delete[] data;     // Освобождаем старые данные
+        delete[] data;     
         
-        data = other.data; // Перехватываем ресурсы
+        data = other.data; 
         size = other.size;
         
-        other.data = nullptr;  // Обнуляем исходный объект
+        other.data = nullptr;  
         other.size = 0;
     }
     return *this;
 }
+
+Array & Array::operator = (const Array &other)
+{
+    size = other.size;
+    for(int i = 0;i < size;i++)
+    {
+        this->data[i] = other.data[i];
+    }
+    return *this;
+}
+
 int Array::Get_Size() const {  return size;  };
 
 bool Array::Is_Empty()
