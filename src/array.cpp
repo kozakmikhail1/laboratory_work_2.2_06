@@ -15,6 +15,12 @@ Array::Array(const Array& other_arr) : size(other_arr.size), data(new int[other_
     }
 }
 
+Array::Array(Array && other)noexcept : size(other.size), data(other.data)
+{
+    other.size = 0;
+    other.data = nullptr;
+}
+
 Array::~Array()
 {
     delete[] data;
@@ -35,6 +41,21 @@ Array &  Array :: operator !()
     data = temp;
     size *= 2;
 
+    return *this;
+}
+
+// Правильное перемещающее присваивание
+Array& Array::operator=(Array&& other) noexcept 
+{
+    if (this != &other) {
+        delete[] data;     // Освобождаем старые данные
+        
+        data = other.data; // Перехватываем ресурсы
+        size = other.size;
+        
+        other.data = nullptr;  // Обнуляем исходный объект
+        other.size = 0;
+    }
     return *this;
 }
 int Array::Get_Size() const {  return size;  };

@@ -6,6 +6,7 @@ void Print_Menu_Constructor()
     std::cout << "You must select a constructor to create the array: "<< std::endl;
     std::cout << "1.Basic Constructor."<< std::endl;
     std::cout << "2.Constructor with input of array length."<< std::endl;
+    std::cout << "3.Exit."<< std::endl;
 
 }
 
@@ -34,7 +35,7 @@ void Menu::Choose_Operation()
             std::cout <<" " << std::endl;
             break;
         case 3:
-            arr_1 = !arr_1;
+            arr_1 = std::move(!arr_1);
             break;
         case 4:
             return;
@@ -47,25 +48,29 @@ void Menu::Choose_Operation()
 void Menu::Choose_Constructor()
 {
     int choose = 0;
-    Print_Menu_Constructor();
 
     while(true)
     {
+        Print_Menu_Constructor();
         choose = Input_Int("Enter number of operation ");
         switch (choose)
         {
             case 1:
             {
-                Array temp_arr;
-                arr_1 = temp_arr;
+                //Array temp_arr;
+                //arr_1 = temp_arr;
                 Choose_Operation();
-                return;
+                break;
             }
             case 2:
             {
                 Array temp_arr_(Input_Int("Enter size of array "));
-                arr_1 = temp_arr_;
+                arr_1 = std::move(temp_arr_);
                 Choose_Operation();
+                break;
+            }
+            case 3:
+            {
                 return;
             }
             default:
